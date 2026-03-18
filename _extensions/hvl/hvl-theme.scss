@@ -84,6 +84,13 @@ $code-block-font-size: 0.65em;
   margin-bottom: 0.5em;
 }
 
+// Suppress the h2 rule on image/full-bleed slides with no visible heading
+.reveal .slides section.no-rule h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 // ── Title slide ───────────────────────────────────────────────
 // Background: set via  title-slide-attributes: data-background-color
 // in the YAML (feeds RevealJS's full-bleed background system).
@@ -374,4 +381,12 @@ $code-block-font-size: 0.65em;
 
 .reveal .slides section .fragment.hl-yellow {
   @include hl-fragment($hvl-yellow);
+}
+
+.reveal .slides section .fragment.hl-green {
+  @include hl-fragment($hvl-green);
+}
+
+.reveal .slides section .fragment.hl-blue {
+  @include hl-fragment($hvl-light-blue);
 }

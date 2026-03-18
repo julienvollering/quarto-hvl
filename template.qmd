@@ -5,6 +5,7 @@ author: "Your Name"
 institute: "Western Norway University of Applied Sciences"
 date: today
 date-format: "D MMMM YYYY"
+from: markdown+emoji
 
 format:
   hvl-revealjs: default
@@ -297,6 +298,7 @@ CUSTOM CLASSES
   .glass-box        dark semi-transparent overlay for images
   .big-number       large teal statistic
   .big-label        small grey label beneath big-number
+  .no-rule          suppress teal h2 border (image/full-bleed slides)
   .teal .blue .muted  colour helpers
   .vcenter          vertically centre a column
   .small .tiny      font-size helpers
@@ -304,5 +306,6 @@ CUSTOM CLASSES
 FRAGMENT HIGHLIGHTS  (text visible throughout; bg animates in)
   [phrase]{.fragment .hl-teal}
   [phrase]{.fragment .hl-yellow}
+  [phrase]{.fragment .hl-green}
   [phrase]{.fragment .hl-blue}
 ─────────────────────────────────────────────────────────── -->
