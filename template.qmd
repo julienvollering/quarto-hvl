@@ -2,9 +2,10 @@
 title: "Presentation Title"
 subtitle: "Subtitle · Course or event name"
 author: "Your Name"
-institute: "Western Norway University of Applied Sciences"
+institute: "Western Norway University of Applied Sciences"  # or: "Høgskulen på Vestlandet"
 date: today
 date-format: "D MMMM YYYY"
+lang: en  # or: nb — logos must be set to the correct language manually (see title-slide-attributes and final slide)
 from: markdown+emoji
 
 format:
@@ -12,7 +13,8 @@ format:
 
 title-slide-attributes:
   data-background-color: "#004357"
-  data-background-image: "_extensions/julienvollering/hvl/hvl_logo_en_neg.png"
+  data-background-image: "_extensions/julienvollering/hvl/hvl_logo_en_neg.png"  # English
+  # data-background-image: "_extensions/julienvollering/hvl/hvl_logo_neg.png"   # Bokmål
   data-background-size: "180px"
   data-background-position: "top 1.5em right 1.5em"
 
@@ -253,6 +255,7 @@ This text only appears in speaker view (press **S**).
 
 ## {.dark-slide background-color="#004357"}
 
+<!-- English: hvl_logo_en_neg.png · Bokmål: hvl_logo_neg.png -->
 ![](_extensions/julienvollering/hvl/hvl_logo_en_neg.png){height="55px"}
 
 ### Thank you
@@ -263,6 +266,7 @@ Your Name · [your.name@hvl.no](mailto:your.name@hvl.no)
 
 ::: {.small .muted}
 Department · Western Norway University of Applied Sciences · hvl.no
+<!-- nb: Institutt · Høgskulen på Vestlandet · hvl.no -->
 :::
 
 
