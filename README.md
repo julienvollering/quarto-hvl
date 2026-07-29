@@ -19,7 +19,7 @@ Requires Quarto 1.6 or newer.
 ### New project
 
 ```bash
-quarto use template julienvollering/HVL-RevealJS-template
+quarto use template julienvollering/quarto-hvl
 ```
 
 This creates two starter documents — `presentation.qmd` and `report.qmd` — and
@@ -28,7 +28,7 @@ installs all three extensions. Delete whichever you don't need.
 ### Add to an existing project
 
 ```bash
-quarto add julienvollering/HVL-RevealJS-template
+quarto add julienvollering/quarto-hvl
 ```
 
 Then set your document format:
@@ -158,7 +158,7 @@ For Word output HVL's manual specifies Arial and Georgia instead; see
 ## Updating
 
 ```bash
-quarto update julienvollering/HVL-RevealJS-template
+quarto update julienvollering/quarto-hvl
 ```
 
 This overwrites the installed extensions. Your `.qmd` files are not affected.

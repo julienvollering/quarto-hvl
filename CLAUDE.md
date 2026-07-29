@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A set of **Quarto extensions** (not an R package, not a website) providing HVL-branded output in two formats, sharing one brand definition. Consumed via `quarto use template` / `quarto add julienvollering/HVL-RevealJS-template`.
+A set of **Quarto extensions** (not an R package, not a website) providing HVL-branded output in two formats, sharing one brand definition. Consumed via `quarto use template` / `quarto add julienvollering/quarto-hvl`.
 
 There is no build step, no test suite, and no linter. The only "build" is rendering the two demo documents:
 
@@ -46,5 +46,5 @@ Backgrounds are deliberately **not** styled in SCSS. RevealJS full-bleed backgro
 - **`brand.yml` `typography.fonts` must be an array**, not a mapping keyed by font name, whatever the reference docs show. A mapping fails brand validation outright.
 - **Extension paths differ between this repo and an install.** In-repo assets are at `_extensions/hvl-brand/`; after a GitHub install they land at `_extensions/julienvollering/hvl-brand/` (the org is part of the path), and after a local-path install at `_extensions/hvl-brand/`. Prefer the `{{< brand logo <name> >}}` shortcode over a written path — it resolves to wherever the brand actually lives, in every case. Wrap it in `::: {.brand-logo}` to size it; the shortcode emits a bare `<img>` and the sources are ~2000px wide. `report.qmd` uses named resources (`logo: hvl-en`) for the same reason, and its R chunk globs both locations. **The one place this can't be done is `title-slide-attributes.data-background-image`** — YAML values aren't shortcode-expanded, so that path stays hardcoded to the GitHub-installed location and silently shows no background when rendered from a clone.
 - **Bilingual is a manual swap.** `lang: en` vs `lang: nb` does not change the logo. Decks need it changed in `title-slide-attributes` and on the closing slide; reports need the `logo:` key. Commented alternatives sit next to each occurrence — keep that pattern.
-- **`HVLStyleGuideDictionary.R`** is an untracked reference file with the full brand spec (PMS/CMYK/RGB/hex, official font families and their usage rules, including the Arial/Georgia *office* fonts prescribed for MS Office output). Commit `5ed57ef` deliberately removed it from the shipped extension — treat it as a lookup table, not code to distribute.
+- **`HVLStyleGuideDictionary.R`** holds the full brand spec (PMS/CMYK/RGB/hex, official font families and their usage rules, including the Arial/Georgia *office* fonts prescribed for MS Office output). It is a lookup table, not part of any extension — nothing sources it, and it ships to users only because the README points at it. Note commit `5ed57ef` had removed it and it was deliberately restored; `brand.yml` is the machine-readable source of truth, this file is the human reference behind it.
 - **docx is not supported by brand.yml** (only `html`, `dashboard`, `revealjs`, `typst`). Word output would need a hand-built `reference-doc:`, which shares nothing with the brand file.
