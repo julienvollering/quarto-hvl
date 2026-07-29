@@ -13,8 +13,8 @@ format:
 
 title-slide-attributes:
   data-background-color: "#004357"
-  data-background-image: "_extensions/julienvollering/hvl/hvl_logo_en_neg.png"  # English
-  # data-background-image: "_extensions/julienvollering/hvl/hvl_logo_neg.png"   # Bokmål
+  data-background-image: "_extensions/julienvollering/hvl-brand/hvl_logo_en_neg.png"  # English
+  # data-background-image: "_extensions/julienvollering/hvl-brand/hvl_logo_neg.png"   # Bokmål
   data-background-size: "180px"
   data-background-position: "top 1.5em right 1.5em"
 
@@ -255,8 +255,10 @@ This text only appears in speaker view (press **S**).
 
 ## {.dark-slide background-color="#004357"}
 
-<!-- English: hvl_logo_en_neg.png · Bokmål: hvl_logo_neg.png -->
-![](_extensions/julienvollering/hvl/hvl_logo_en_neg.png){height="55px"}
+::: {.brand-logo}
+<!-- English: hvl-en-neg · Bokmål: hvl-nb-neg -->
+{{< brand logo hvl-en-neg >}}
+:::
 
 ### Thank you
 
@@ -294,6 +296,12 @@ CODE HIGHLIGHTING
 
 ABSOLUTE POSITIONING  (element written last = on top)
   ::: {.absolute top="20%" right="5%" width="35%"} ... :::
+
+BRAND LOGO  (resolves in-repo and when installed — prefer over a path)
+  ::: {.brand-logo}
+  {{< brand logo hvl-en-neg >}}    en · nb: hvl-nb-neg
+  :::
+  Positive variants: hvl-en, hvl-nb
 
 CUSTOM CLASSES
   .ingress          lead sentence in teal DM Sans

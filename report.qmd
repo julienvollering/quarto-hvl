@@ -1,0 +1,97 @@
+---
+title: "Report Title"
+subtitle: "Subtitle · Project or course name"
+author: "Your Name"
+date: today
+date-format: "D MMMM YYYY"
+lang: en  # or: nb — set logo to hvl-nb below to match
+
+format:
+  hvl-typst: default
+
+# Named logo resource from the HVL brand. English: hvl-en · Bokmål: hvl-nb
+logo: hvl-en
+
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Introduction
+
+This report inherits HVL colours, fonts, headings and link styling from
+`_extensions/hvl-brand/brand.yml` — the same brand file that styles the
+RevealJS deck in `presentation.qmd`. Nothing about the HVL visual identity is
+restated in the report format itself.
+
+Body text is set in Lora, a close open-source match to the profile font Lyon
+Text. Headings use DM Sans in place of NB Akademie Std. Typst downloads both
+from Google Fonts on first render and caches them, so neither font needs to be
+installed locally.
+
+## Working with the palette in R
+
+Because the brand file is plain YAML, R can read the palette directly rather
+than repeating hex codes. This keeps figures in step with the theme.
+
+```{r}
+#| label: palette
+brand_path <- Sys.glob(c(
+  "_extensions/hvl-brand/brand.yml", # rendering inside this repo
+  "_extensions/*/hvl-brand/brand.yml" # installed via quarto add
+))[1]
+
+hvl <- yaml::read_yaml(brand_path)$color$palette
+unlist(hvl[c("sea-green", "dark-blue-1", "dark-blue-2")])
+```
+
+## Figures
+
+```{r}
+#| label: fig-mpg
+#| fig-cap: "Fuel efficiency against weight, coloured by cylinder count."
+#| fig-height: 3.2
+library(ggplot2)
+
+ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) +
+  geom_point(size = 2.5, alpha = 0.85) +
+  scale_colour_manual(
+    values = unname(unlist(hvl[c("sea-green", "dark-blue-1", "dark-blue-2")])),
+    name = "Cylinders"
+  ) +
+  labs(x = "Weight (1 000 lbs)", y = "Miles per gallon") +
+  theme_minimal(base_size = 11)
+```
+
+## Tables
+
+| Campus | Students | Programmes |
+|--------|---------:|-----------:|
+| Bergen | 9 800 | 62 |
+| Haugesund | 2 100 | 18 |
+| Sogndal | 3 400 | 24 |
+| Førde | 1 200 | 9 |
+
+: Illustrative figures only. {#tbl-campus}
+
+## Cross-references and links
+
+@fig-mpg and @tbl-campus show the default Typst reference styling. Links such
+as [hvl.no](https://www.hvl.no) take their colour from the brand's `primary`.
+
+Inline code like `mean(mpg)` and blocks both use JetBrains Mono:
+
+```r
+summary_df <- mtcars |>
+  dplyr::group_by(cyl) |>
+  dplyr::summarise(mean_mpg = mean(mpg))
+```
+
+## Extending this format
+
+`_extensions/hvl-report/_extension.yml` is intentionally almost empty. If you
+later want an HVL title page, running headers or specific page geometry, that
+is where a custom `.typ` template would be wired in — brand values are readable
+from Typst raw blocks as `brand-color.primary` and friends, so this brand file
+stays valid.

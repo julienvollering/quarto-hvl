@@ -1,3 +1,9 @@
 # Quarto build output
-template.html
-template_files/
+presentation.html
+presentation_files/
+report.pdf
+report.typ
+report_files/
+
+# Quarto caches, incl. Typst fonts downloaded from Google by brand.yml
+.quarto/

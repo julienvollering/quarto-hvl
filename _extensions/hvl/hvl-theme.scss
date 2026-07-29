@@ -9,10 +9,23 @@
     Code     : JetBrains Mono
   To swap in the official fonts, replace the @import below with
   @font-face declarations and update the two font variables.
+
+  This file and _extensions/hvl-brand/brand.yml both restate the palette and
+  the font families: the @import below loads fonts for revealjs, brand.yml
+  loads them for typst. See the palette comment below for why they can't be
+  shared. Change one, change the other.
 =============================================================*/
 
 
 /*-- scss:defaults --*/
+
+// Palette — kept in sync BY HAND with _extensions/hvl-brand/brand.yml.
+//
+// These cannot be aliased to brand's $brand-<name> variables. Those are only
+// defined for SCSS layers emitted after brand, which requires brand to outrank
+// this file in `theme:` — and then brand also wins on shared variables and
+// quietly replaces the font stacks below. Duplication is the lesser evil, so
+// if you change a colour here, change it in brand.yml too (and vice versa).
 
 // HVL Signal Colors (Signalfarge)
 $hvl-sea-green: #00AFBA; // Sjøgrønn — primary brand color
@@ -357,6 +370,19 @@ $code-block-font-size: 0.65em;
 
 .reveal .r-fit-text {
   text-align: center;
+}
+
+// Sizes the {{< brand logo >}} shortcode, which emits a bare <img> carrying no
+// height — the source files are ~2000px wide. Prefer this over hardcoding a
+// path to the logo, because the shortcode resolves in both this repo and an
+// installed copy. Usage:
+//   ::: {.brand-logo}
+//   {{< brand logo hvl-en-neg >}}
+//   :::
+.reveal .brand-logo img {
+  height: 55px;
+  width: auto;
+  margin: 0;
 }
 
 // ── Text-background highlight fragments ───────────────────────

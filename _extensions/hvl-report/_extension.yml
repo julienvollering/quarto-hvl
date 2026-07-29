@@ -1,0 +1,12 @@
+title: HVL Report
+author: julienvollering
+version: 1.0.0
+quarto-required: ">=1.6.0"
+contributes:
+  formats:
+    typst:
+      # Deliberately minimal. Colours, fonts, headings, links and code styling
+      # all come from _extensions/hvl-brand/brand.yml — nothing is restated here.
+      # No page geometry, title page or headers/footers are imposed, so this
+      # stays pure YAML with no .typ template to maintain.
+      toc: false

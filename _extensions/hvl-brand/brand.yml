@@ -1,0 +1,104 @@
+# HVL brand — Høgskulen på Vestlandet / Western Norway University of Applied Sciences
+# Encodes Visuell identitet / Profilmanual 2017.
+# Palette keys are ASCII because they surface in SCSS as $brand-<key>;
+# the Norwegian names from the manual are kept in comments.
+
+meta:
+  name: Høgskulen på Vestlandet
+  link: https://www.hvl.no
+
+color:
+  palette:
+    # Signal colours (signalfarge)
+    sea-green: "#00AFBA" # sjøgrønn — primary brand colour
+    green: "#96DE99" # grønn
+    light-blue: "#64D0DF" # lys blå
+    yellow: "#F9DE45" # gul
+    orange: "#EB6851" # oransje
+
+    # Support colours (støttefarge)
+    dark-blue-1: "#008AAF" # mørk blå 1
+    dark-teal: "#009382" # mørk blågrønn
+    dark-blue-2: "#004357" # mørk blå 2 — darkest, backgrounds and body text
+    dark-red: "#6D2439" # mørk rød
+
+    # Additional tones (tilleggstoner)
+    gray-dark: "#8F8A83" # grå mørk
+    gray-medium: "#B0ACA5" # grå medium
+    gray-light: "#D2CDC8" # grå lys
+    blue-gray-dark: "#707B7B" # blågrå mørk
+    blue-gray-med: "#ACB7B2" # blågrå medium
+    blue-gray-light: "#C9D5DA" # blågrå lys
+
+  foreground: dark-blue-2
+  background: "#FFFFFF"
+  primary: sea-green
+  secondary: gray-dark
+  tertiary: blue-gray-light
+  success: green
+  info: light-blue
+  warning: yellow
+  danger: orange
+  light: "#FFFFFF"
+  dark: dark-blue-2
+
+typography:
+  # Open-source substitutes for the licensed profile fonts:
+  #   DM Sans  ~ NB Akademie Std   (titles, ingresses, captions)
+  #   Lora     ~ Lyon Text         (body)
+  # Typst downloads these from Google Fonts and caches them under
+  # .quarto/typst-font-cache, so no local install is needed.
+  fonts:
+    - source: google
+      family: DM Sans
+      weight: [300, 400, 700]
+      style: [normal, italic]
+    - source: google
+      family: Lora
+      weight: [400, 600]
+      style: [normal, italic]
+    - source: google
+      family: JetBrains Mono
+      weight: [400]
+      style: [normal]
+
+  base:
+    # No line-height here on purpose. Brand's base typography reaches revealjs
+    # as well as typst, and setting it loosened every slide from 1.3 to 1.5.
+    # Set line spacing per format instead.
+    family: Lora
+  headings:
+    # "DM Sans 9pt", not "DM Sans": DM Sans is a variable font with an optical-
+    # size axis, and Google Fonts serves it as static instances whose internal
+    # family name carries the optical size. Typst matches on that internal name
+    # and warns "unknown font family: dm sans" otherwise. See quarto-cli#11947.
+    # Verify against `.quarto/typst/available-fonts.json` if the font updates.
+    # The deck is unaffected — hvl-theme.scss sets its own heading font and
+    # overrides brand, and CSS resolves the variable font as plain "DM Sans".
+    family: DM Sans 9pt
+    weight: 700
+    color: dark-blue-2
+    line-height: 1.2
+  monospace:
+    family: JetBrains Mono
+  link:
+    color: primary
+
+# Named logo resources only — deliberately no small/medium/large.
+# Those trigger automatic placement (bottom right on revealjs, top left on
+# typst); the deck's title slide already positions its own logo, so documents
+# opt in explicitly instead, e.g.  logo: hvl-en  in report.qmd.
+logo:
+  images:
+    hvl-nb:
+      path: hvl_logo.png
+      alt: Høgskulen på Vestlandet
+    hvl-en:
+      path: hvl_logo_engelsk.png
+      alt: Western Norway University of Applied Sciences
+    hvl-nb-neg:
+      path: hvl_logo_neg.png
+      alt: Høgskulen på Vestlandet
+    hvl-en-neg:
+      path: hvl_logo_en_neg.png
+      alt: Western Norway University of Applied Sciences

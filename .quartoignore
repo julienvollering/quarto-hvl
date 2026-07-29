@@ -1,0 +1,13 @@
+# Files not copied into a user's project by `quarto use template`.
+# This is separate from .gitignore, which quarto use template does not read —
+# without this, a local render's output would be shipped to users.
+
+# Build output
+presentation.html
+presentation_files/
+report.pdf
+report.typ
+report_files/
+
+# Maintainer-only guidance for working on the theme itself
+CLAUDE.md
